@@ -10,11 +10,13 @@ MODEL_DIR = Path(__file__).resolve().parent
 
 
 def load_model(filename):
+    """Load a previously trained model from its saved pickle file."""
     with open(MODEL_DIR / filename, "rb") as f:
         return pickle.load(f)
 
 
 def normalize_roast(value):
+    """Standardize roast labels so predictions handle capitalization consistently."""
     if pd.isna(value):
         return None
     return str(value).strip().lower()

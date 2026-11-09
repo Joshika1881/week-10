@@ -52,6 +52,7 @@ roast_mapping = {
 
 
 def normalize_roast(value):
+    """Normalize roast labels to lowercase and preserve missing values."""
     if pd.isna(value):
         return None
     value = str(value).strip().lower()
@@ -69,6 +70,7 @@ for roast in extra_roasts:
 
 
 def roast_category(value):
+    """Convert each roast category to a numeric code, using NaN for missing or unknown values."""
     roast = normalize_roast(value)
     return roast_mapping.get(roast, np.nan)
 
